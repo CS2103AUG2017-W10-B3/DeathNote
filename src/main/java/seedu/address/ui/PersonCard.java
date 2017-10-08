@@ -70,12 +70,13 @@ public class PersonCard extends UiPart<Region> {
     }
 
     /**
-     * Initialise tag colors for person
+     * Adds colors for tags for each person shown
+     * @param person Person that is to be shown
      */
     private void initTags(ReadOnlyPerson person) {
         person.getTags().forEach(tag -> {
             Label tagLabel = new Label(tag.tagName);
-            tagLabel.setStyle(UiStyle.getInstance().getBackgroundStyle(getColorForTag(tag.tagName)));
+            tagLabel.setStyle(UiStyle.getInstance().getBackgroundStyle(colorForTag(tag.tagName)));
             tags.getChildren().add(tagLabel);
         });
     }
@@ -98,7 +99,13 @@ public class PersonCard extends UiPart<Region> {
                 && person.equals(card.person);
     }
 
-    private static String getColorForTag(String tagValue) {
+    /**
+     * Returns the color for tag in HEX form e.g. "#FFFFFF" if tag has an assigned color
+     * Sets a color for tag if tag is not assigned a color
+     * @param tagValue Value of a tag in string e.g. "best friend"
+     * @return color of tag in hexadecimal
+     */
+    private static String colorForTag(String tagValue) {
         if (!tagColors.containsKey(tagValue)) {
             tagColors.put(tagValue, UiStyle.getInstance().getRandomHexColor());
         }
