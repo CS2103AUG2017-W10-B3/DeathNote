@@ -23,6 +23,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.Remark;
+import seedu.address.model.person.Website;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
@@ -102,9 +103,10 @@ public class EditCommand extends UndoableCommand {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Remark updatedRemark = personToEdit.getRemark(); // edit command does not allow editing remarks
+        Website updatedWebsite = editPersonDescriptor.getWebsite().orElse(personToEdit.getWebsite());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark, updatedWebsite, updatedTags);
     }
 
     @Override
@@ -135,6 +137,7 @@ public class EditCommand extends UndoableCommand {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private Website website;
 
         public EditPersonDescriptor() {}
 
@@ -144,6 +147,7 @@ public class EditCommand extends UndoableCommand {
             this.email = toCopy.email;
             this.address = toCopy.address;
             this.tags = toCopy.tags;
+            this.website = toCopy.website;
         }
 
         /**
@@ -193,6 +197,8 @@ public class EditCommand extends UndoableCommand {
             return Optional.ofNullable(tags);
         }
 
+        public Optional<Website> getWebsite() { return Optional.ofNullable(website); }
+
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -212,7 +218,8 @@ public class EditCommand extends UndoableCommand {
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
-                    && getTags().equals(e.getTags());
+                    && getTags().equals(e.getTags())
+                    && getWebsite().equals((e.getWebsite()));
         }
     }
 }

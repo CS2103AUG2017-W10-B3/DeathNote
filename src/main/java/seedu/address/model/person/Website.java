@@ -12,7 +12,9 @@ public class Website {
     public static final String MESSAGE_WEBSITE_CONSTRAINS =
             "Website can only contain https/http:// www.";
     public static final String WEBSITE_VALIDATION_REGEX =
-            "(https\\:\\/\\/)|(http\\:\\/\\/)|(www\\.)|[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
+            ".+"; //"(https\\:\\/\\/)|(http\\:\\/\\/)|(www\\.)|[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
+    public static final String WEBSITE_EXAMPLE = "www.website.com";
+    public static final String WEBSITE_NULL = "WEBSITE_NULL"; // no website
     public final String value;
 
     /**
@@ -32,7 +34,7 @@ public class Website {
      * Returns true if given string is valid person website
      */
     public static boolean isValidWebsite(String test) {
-        return test.matches(WEBSITE_VALIDATION_REGEX);
+        return test.equals(WEBSITE_NULL) || test.matches(WEBSITE_VALIDATION_REGEX);
     }
 
     @Override

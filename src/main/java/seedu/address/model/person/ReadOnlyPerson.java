@@ -24,6 +24,8 @@ public interface ReadOnlyPerson {
     Remark getRemark();
     ObjectProperty<UniqueTagList> tagProperty();
     Set<Tag> getTags();
+    ObjectProperty<Website> websiteProperty();
+    Website getWebsite();
 
     /**
      * Returns true if both have the same state. (interfaces cannot override .equals)
