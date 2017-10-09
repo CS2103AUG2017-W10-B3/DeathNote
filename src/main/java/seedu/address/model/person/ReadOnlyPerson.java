@@ -22,10 +22,12 @@ public interface ReadOnlyPerson {
     Address getAddress();
     ObjectProperty<Remark> remarkProperty();
     Remark getRemark();
-    ObjectProperty<UniqueTagList> tagProperty();
-    Set<Tag> getTags();
     ObjectProperty<Website> websiteProperty();
     Website getWebsite();
+    ObjectProperty<UniqueTagList> tagProperty();
+    Set<Tag> getTags();
+
+    boolean hasWebsite();
 
     /**
      * Returns true if both have the same state. (interfaces cannot override .equals)
@@ -55,6 +57,8 @@ public interface ReadOnlyPerson {
                 .append(getAddress())
                 .append(" Remarks: ")
                 .append(getRemark())
+                .append(" Website: ")
+                .append(getWebsite())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

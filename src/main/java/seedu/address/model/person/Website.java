@@ -1,7 +1,5 @@
 package seedu.address.model.person;
 
-import static java.util.Objects.requireNonNull;
-
 import seedu.address.commons.exceptions.IllegalValueException;
 
 /**
@@ -12,16 +10,15 @@ public class Website {
     public static final String MESSAGE_WEBSITE_CONSTRAINS =
             "Website can only contain https/http:// www.";
     public static final String WEBSITE_VALIDATION_REGEX =
-            ".+"; //"(https\\:\\/\\/)|(http\\:\\/\\/)|(www\\.)|[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
-    public static final String WEBSITE_EXAMPLE = "www.website.com";
-    public static final String WEBSITE_NULL = "WEBSITE_NULL"; // no website
+            "https?://(www\\.)?[-a-z0-9]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_+.~#?&//=]*)";
+    public static final String WEBSITE_EXAMPLE = "http://www.website.com";
+    public static final String WEBSITE_NULL = ""; // no website
     public final String value;
 
     /**
      *
      */
     public Website(String website)throws IllegalValueException {
-        requireNonNull(website);
         String trimmedWebsite = website.trim();
         if (!isValidWebsite(trimmedWebsite)) {
             throw new IllegalValueException(MESSAGE_WEBSITE_CONSTRAINS);
@@ -52,5 +49,9 @@ public class Website {
     @Override
     public int hashCode() {
         return value.hashCode();
+    }
+
+    public boolean hasWebsite() {
+        return !value.equalsIgnoreCase(WEBSITE_NULL);
     }
 }

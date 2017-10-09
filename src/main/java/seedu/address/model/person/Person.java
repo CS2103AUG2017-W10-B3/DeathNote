@@ -126,6 +126,11 @@ public class Person implements ReadOnlyPerson {
     public Website getWebsite() { return website.get(); }
 
     /**
+     * Returns true if website is not null
+     */
+    public boolean hasWebsite() { return website.get().hasWebsite(); }
+
+    /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */

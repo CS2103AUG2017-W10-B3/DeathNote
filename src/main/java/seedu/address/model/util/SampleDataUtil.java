@@ -46,7 +46,7 @@ public class SampleDataUtil {
                         getTagSet("classmates")),
                 new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
                         new Address("Blk 45 Aljunied Street 85, #11-31"),
-                        new Remark(""), new Website(Website.WEBSITE_EXAMPLE),
+                        new Remark(""), new Website(Website.WEBSITE_NULL),
                         getTagSet("colleagues"))
             };
         } catch (IllegalValueException e) {

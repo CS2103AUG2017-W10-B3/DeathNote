@@ -69,8 +69,7 @@ public class PersonCard extends UiPart<Region> {
             tags.getChildren().clear();
             person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         });
-        website.textProperty().setValue("SAMPLE WEBSITE.");
-        //website.textProperty().bind(Bindings.convert(person.websitePropety()));
+        website.textProperty().bind(Bindings.convert(person.websiteProperty()));
     }
 
     /**
