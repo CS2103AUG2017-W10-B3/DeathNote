@@ -37,7 +37,7 @@ public class RemarkCommand extends UndoableCommand {
     private final Remark remark;
 
     /**
-     * @param index of the person in the filtered person list to edit the remark
+     * @param index  of the person in the filtered person list to edit the remark
      * @param remark of the person
      */
     public RemarkCommand(Index index, Remark remark) {
@@ -74,6 +74,7 @@ public class RemarkCommand extends UndoableCommand {
 
     /**
      * Generate success message based on the person edited
+     *
      * @param personToEdit
      * @return message whether remark is added or deleted
      */
