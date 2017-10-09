@@ -32,6 +32,8 @@ public class XmlAdaptedPerson {
     private String address;
     @XmlElement(required = true)
     private String remark;
+    @XmlElement(required = true)
+    private String website;
 
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
@@ -55,6 +57,7 @@ public class XmlAdaptedPerson {
         address = source.getAddress().value;
         remark = source.getRemark().value;
         tagged = new ArrayList<>();
+        website = "sample Website dummy value";
         for (Tag tag : source.getTags()) {
             tagged.add(new XmlAdaptedTag(tag));
         }
