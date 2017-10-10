@@ -33,28 +33,28 @@ public class TypicalPersons {
     public static final ReadOnlyPerson BENSON = new PersonBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
             .withEmail("johnd@example.com").withPhone("98765432")
-            .withWebsite("http://www.yahoo.com")
+            .withWebsite("http://www.google.com")
             .withTags("owesMoney", "friends").build();
     public static final ReadOnlyPerson CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
             .withEmail("heinz@example.com").withWebsite("http://www.website.com").withAddress("wall street").build();
     public static final ReadOnlyPerson DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
-            .withEmail("cornelia@example.com").withWebsite("http://www.yahoo.com")
+            .withEmail("cornelia@example.com").withWebsite("http://www.google.com")
             .withAddress("10th street").build();
     public static final ReadOnlyPerson ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
-            .withEmail("werner@example.com").withWebsite("http://www.yahoo.com")
+            .withEmail("werner@example.com").withWebsite("http://www.google.com")
             .withAddress("michegan ave").build();
     public static final ReadOnlyPerson FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")
-            .withEmail("lydia@example.com").withWebsite("http://www.yahoo.com")
+            .withEmail("lydia@example.com").withWebsite("http://www.google.com")
             .withAddress("little tokyo").build();
     public static final ReadOnlyPerson GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
-            .withEmail("anna@example.com").withWebsite("http://www.yahoo.com").withAddress("4th street").build();
+            .withEmail("anna@example.com").withWebsite("http://www.google.com").withAddress("4th street").build();
 
     // Manually added
     public static final ReadOnlyPerson HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
-            .withEmail("stefan@example.com").withWebsite("http://www.yahoo.com")
+            .withEmail("stefan@example.com").withWebsite("http://www.google.com")
             .withAddress("little india").build();
     public static final ReadOnlyPerson IDA = new PersonBuilder().withName("Ida Mueller").withPhone("8482131")
-            .withEmail("hans@example.com").withWebsite("http://www.yahoo.com")
+            .withEmail("hans@example.com").withWebsite("http://www.google.com")
             .withAddress("chicago ave").build();
 
     // Manually added - Person's details found in {@code CommandTestUtil}
