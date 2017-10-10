@@ -24,7 +24,7 @@ public class Website {
             throw new IllegalValueException(MESSAGE_WEBSITE_CONSTRAINS);
         }
 
-        this.value = website;
+        this.value = trimmedWebsite;
     }
 
     /**
