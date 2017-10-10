@@ -169,6 +169,7 @@ public class Person implements ReadOnlyPerson {
         this.setPhone(replacement.getPhone());
         this.setEmail(replacement.getEmail());
         this.setAddress(replacement.getAddress());
+        this.setWebsite(replacement.getWebsite());
         this.setRemark(replacement.getRemark());
         this.setTags(replacement.getTags());
     }

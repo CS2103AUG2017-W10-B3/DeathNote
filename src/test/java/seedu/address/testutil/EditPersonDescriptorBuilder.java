@@ -85,6 +85,18 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
+     * Sets the {@code Address} of the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditPersonDescriptorBuilder withWebsite(String website) {
+        try {
+            ParserUtil.parseWebsite(Optional.of(website)).ifPresent(descriptor::setWebsite);
+        } catch (IllegalValueException ive) {
+            throw new IllegalArgumentException("website is expected to be unique.");
+        }
+        return this;
+    }
+
+    /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
      * that we are building.
      */
