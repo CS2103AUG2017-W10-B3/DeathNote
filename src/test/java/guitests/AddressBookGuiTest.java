@@ -93,6 +93,7 @@ public abstract class AddressBookGuiTest {
 
     /**
      * Runs {@code command} in the application's {@code CommandBox}.
+     *
      * @return true if the command was executed successfully.
      */
     protected boolean runCommand(String command) {

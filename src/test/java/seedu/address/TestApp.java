@@ -31,7 +31,7 @@ public class TestApp extends MainApp {
     public static final String APP_TITLE = "Test App";
 
     protected static final String DEFAULT_PREF_FILE_LOCATION_FOR_TESTING =
-            TestUtil.getFilePathInSandboxFolder("pref_testing.json");
+        TestUtil.getFilePathInSandboxFolder("pref_testing.json");
     protected static final String ADDRESS_BOOK_NAME = "Test";
     protected Supplier<ReadOnlyAddressBook> initialDataSupplier = () -> null;
     protected String saveFileLocation = SAVE_LOCATION_FOR_TESTING;
@@ -47,7 +47,7 @@ public class TestApp extends MainApp {
         // If some initial local data has been provided, write those to the file
         if (initialDataSupplier.get() != null) {
             createDataFileWithData(new XmlSerializableAddressBook(this.initialDataSupplier.get()),
-                    this.saveFileLocation);
+                this.saveFileLocation);
         }
     }
 

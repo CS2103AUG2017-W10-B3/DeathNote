@@ -26,7 +26,7 @@ public class ErrorDialogGuiTest extends AddressBookGuiTest {
         AlertDialogHandle alertDialog = new AlertDialogHandle(guiRobot.getStage(FILE_OPS_ERROR_DIALOG_STAGE_TITLE));
         assertEquals(FILE_OPS_ERROR_DIALOG_HEADER_MESSAGE, alertDialog.getHeaderText());
         assertEquals(FILE_OPS_ERROR_DIALOG_CONTENT_MESSAGE + ":\n" + IO_EXCEPTION_STUB.toString(),
-                alertDialog.getContentText());
+            alertDialog.getContentText());
     }
 
 }

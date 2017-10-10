@@ -36,7 +36,7 @@ public class RedoCommandTest {
     @Test
     public void execute() {
         UndoRedoStack undoRedoStack = prepareStack(
-                Collections.emptyList(), Arrays.asList(deleteCommandTwo, deleteCommandOne));
+            Collections.emptyList(), Arrays.asList(deleteCommandTwo, deleteCommandOne));
         RedoCommand redoCommand = new RedoCommand();
         redoCommand.setData(model, EMPTY_COMMAND_HISTORY, undoRedoStack);
         Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());

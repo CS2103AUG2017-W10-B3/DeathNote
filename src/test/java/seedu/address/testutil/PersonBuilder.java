@@ -36,7 +36,7 @@ public class PersonBuilder {
             Remark defaultRemark = new Remark(DEFAULT_REMARK);
             Set<Tag> defaultTags = SampleDataUtil.getTagSet(DEFAULT_TAGS);
             this.person = new Person(defaultName, defaultPhone, defaultEmail,
-                    defaultAddress, defaultRemark, defaultTags);
+                defaultAddress, defaultRemark, defaultTags);
         } catch (IllegalValueException ive) {
             throw new AssertionError("Default person's values are invalid.");
         }
@@ -64,7 +64,7 @@ public class PersonBuilder {
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
      */
-    public PersonBuilder withTags(String ... tags) {
+    public PersonBuilder withTags(String... tags) {
         try {
             this.person.setTags(SampleDataUtil.getTagSet(tags));
         } catch (IllegalValueException ive) {

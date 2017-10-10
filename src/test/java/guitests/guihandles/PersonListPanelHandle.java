@@ -22,6 +22,7 @@ public class PersonListPanelHandle extends NodeHandle<ListView<PersonCard>> {
     /**
      * Returns a handle to the selected {@code PersonCardHandle}.
      * A maximum of 1 item can be selected at any time.
+     *
      * @throws AssertionError if no card is selected, or more than 1 card is selected.
      */
     public PersonCardHandle getHandleToSelectedCard() {
@@ -84,9 +85,9 @@ public class PersonListPanelHandle extends NodeHandle<ListView<PersonCard>> {
      */
     public PersonCardHandle getPersonCardHandle(ReadOnlyPerson person) {
         Optional<PersonCardHandle> handle = getRootNode().getItems().stream()
-                .filter(card -> card.person.equals(person))
-                .map(card -> new PersonCardHandle(card.getRoot()))
-                .findFirst();
+            .filter(card -> card.person.equals(person))
+            .map(card -> new PersonCardHandle(card.getRoot()))
+            .findFirst();
         return handle.orElseThrow(() -> new IllegalArgumentException("Person does not exist."));
     }
 
@@ -121,7 +122,7 @@ public class PersonListPanelHandle extends NodeHandle<ListView<PersonCard>> {
             return lastRememberedSelectedPersonCard.isPresent();
         } else {
             return !lastRememberedSelectedPersonCard.isPresent()
-                    || !lastRememberedSelectedPersonCard.get().equals(selectedItems.get(0));
+                || !lastRememberedSelectedPersonCard.get().equals(selectedItems.get(0));
         }
     }
 
