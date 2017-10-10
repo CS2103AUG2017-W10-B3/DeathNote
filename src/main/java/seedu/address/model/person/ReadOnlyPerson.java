@@ -13,18 +13,31 @@ import seedu.address.model.tag.UniqueTagList;
 public interface ReadOnlyPerson {
 
     ObjectProperty<Name> nameProperty();
+
     Name getName();
+
     ObjectProperty<Phone> phoneProperty();
+
     Phone getPhone();
+
     ObjectProperty<Email> emailProperty();
+
     Email getEmail();
+
     ObjectProperty<Address> addressProperty();
+
     Address getAddress();
+
     ObjectProperty<Remark> remarkProperty();
+
     Remark getRemark();
+
     ObjectProperty<Website> websiteProperty();
+
     Website getWebsite();
+
     ObjectProperty<UniqueTagList> tagProperty();
+
     Set<Tag> getTags();
 
     boolean hasWebsite();
@@ -34,12 +47,12 @@ public interface ReadOnlyPerson {
      */
     default boolean isSameStateAs(ReadOnlyPerson other) {
         return other == this // short circuit if same object
-                || (other != null // this is first to avoid NPE below
-                && other.getName().equals(this.getName()) // state checks here onwards
-                && other.getPhone().equals(this.getPhone())
-                && other.getEmail().equals(this.getEmail())
-                && other.getAddress().equals(this.getAddress())
-                && other.getRemark().equals(this.getRemark()));
+            || (other != null // this is first to avoid NPE below
+            && (other.getName().equals(this.getName())) // state checks here onwards
+            && (other.getPhone().equals(this.getPhone()))
+            && (other.getEmail().equals(this.getEmail()))
+            && (other.getAddress().equals(this.getAddress()))
+            && (other.getRemark().equals(this.getRemark())));
 
     }
 
@@ -49,17 +62,17 @@ public interface ReadOnlyPerson {
     default String getAsText() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append(" Phone: ")
-                .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
-                .append(" Address: ")
-                .append(getAddress())
-                .append(" Remarks: ")
-                .append(getRemark())
-                .append(" Website: ")
-                .append(getWebsite())
-                .append(" Tags: ");
+            .append(" Phone: ")
+            .append(getPhone())
+            .append(" Email: ")
+            .append(getEmail())
+            .append(" Address: ")
+            .append(getAddress())
+            .append(" Remarks: ")
+            .append(getRemark())
+            .append(" Website: ")
+            .append(getWebsite())
+            .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
     }

@@ -57,7 +57,7 @@ public class EditCommand extends UndoableCommand {
     private final EditPersonDescriptor editPersonDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
+     * @param index                of the person in the filtered person list to edit
      * @param editPersonDescriptor details to edit the person with
      */
     public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
@@ -106,7 +106,8 @@ public class EditCommand extends UndoableCommand {
         Website updatedWebsite = editPersonDescriptor.getWebsite().orElse(personToEdit.getWebsite());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark, updatedWebsite, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail,
+                updatedAddress, updatedRemark, updatedWebsite, updatedTags);
     }
 
     @Override
@@ -139,7 +140,8 @@ public class EditCommand extends UndoableCommand {
         private Set<Tag> tags;
         private Website website;
 
-        public EditPersonDescriptor() {}
+        public EditPersonDescriptor() {
+        }
 
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             this.name = toCopy.name;
@@ -166,7 +168,9 @@ public class EditCommand extends UndoableCommand {
         }
 
         public void setPhone(Phone phone) {
-            this.phone = phone;
+            if (phone.value != null) {
+                this.phone = phone;
+            }
         }
 
         public Optional<Phone> getPhone() {
@@ -174,7 +178,9 @@ public class EditCommand extends UndoableCommand {
         }
 
         public void setEmail(Email email) {
-            this.email = email;
+            if (email.value != null) {
+                this.email = email;
+            }
         }
 
         public Optional<Email> getEmail() {
@@ -182,7 +188,9 @@ public class EditCommand extends UndoableCommand {
         }
 
         public void setAddress(Address address) {
-            this.address = address;
+            if (address.value != null) {
+                this.address = address;
+            }
         }
 
         public Optional<Address> getAddress() {
@@ -197,7 +205,9 @@ public class EditCommand extends UndoableCommand {
             return Optional.ofNullable(tags);
         }
 
-        public Optional<Website> getWebsite() { return Optional.ofNullable(website); }
+        public Optional<Website> getWebsite() {
+            return Optional.ofNullable(website);
+        }
 
         @Override
         public boolean equals(Object other) {
@@ -218,8 +228,8 @@ public class EditCommand extends UndoableCommand {
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
-                    && getTags().equals(e.getTags())
-                    && getWebsite().equals((e.getWebsite()));
+                    && getWebsite().equals((e.getWebsite()))
+                    && getTags().equals(e.getTags());
         }
     }
 }

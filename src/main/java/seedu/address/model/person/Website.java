@@ -19,7 +19,7 @@ public class Website {
      *
      */
     public Website(String website)throws IllegalValueException {
-        String trimmedWebsite = website.trim();
+        String trimmedWebsite = website == null ? WEBSITE_NULL : website.trim();
         if (!isValidWebsite(trimmedWebsite)) {
             throw new IllegalValueException(MESSAGE_WEBSITE_CONSTRAINS);
         }

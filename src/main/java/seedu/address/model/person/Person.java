@@ -1,7 +1,6 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
 import java.util.Objects;
@@ -27,10 +26,10 @@ public class Person implements ReadOnlyPerson {
     private ObjectProperty<UniqueTagList> tags;
 
     /**
-     * Every field must be present and not null.
+     * Every field must be present and name must not be null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Remark remark, Website website, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+        requireNonNull(name);
         this.name = new SimpleObjectProperty<>(name);
         this.phone = new SimpleObjectProperty<>(phone);
         this.email = new SimpleObjectProperty<>(email);
@@ -167,8 +166,8 @@ public class Person implements ReadOnlyPerson {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof ReadOnlyPerson // instanceof handles nulls
-                && this.isSameStateAs((ReadOnlyPerson) other));
+            || (other instanceof ReadOnlyPerson // instanceof handles nulls
+            && this.isSameStateAs((ReadOnlyPerson) other));
     }
 
     @Override
