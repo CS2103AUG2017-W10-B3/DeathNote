@@ -119,15 +119,21 @@ public class Person implements ReadOnlyPerson {
     }
 
     @Override
-    public ObjectProperty<Website> websiteProperty() { return website; }
+    public ObjectProperty<Website> websiteProperty() {
+        return website;
+    }
 
     @Override
-    public Website getWebsite() { return website.get(); }
+    public Website getWebsite() {
+        return website.get();
+    }
 
     /**
      * Returns true if website is not null
      */
-    public boolean hasWebsite() { return website.get().hasWebsite(); }
+    public boolean hasWebsite() {
+        return website.get().hasWebsite();
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
