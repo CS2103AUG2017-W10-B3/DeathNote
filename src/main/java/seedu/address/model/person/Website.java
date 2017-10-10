@@ -8,7 +8,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
  */
 public class Website {
     public static final String MESSAGE_WEBSITE_CONSTRAINS =
-            "Website can only contain https/http:// www.";
+            "Website can should contain a prefix of http:// and a proper domain. E.g. http://www.yahoo.com";
     public static final String WEBSITE_VALIDATION_REGEX =
             "https?://(www\\.)?[-a-z0-9]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_+.~#?&//=]*)";
     public static final String WEBSITE_EXAMPLE = "http://www.website.com";
