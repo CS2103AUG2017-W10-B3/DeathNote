@@ -120,6 +120,18 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     *
+     */
+    public PersonBuilder withWebsite(String website) {
+        try {
+            this.person.setWebsite(new Website(website));
+        } catch (IllegalValueException ive) {
+            throw new IllegalArgumentException("website is expected to be unique");
+        }
+        return this;
+    }
+
     public Person build() {
         return this.person;
     }

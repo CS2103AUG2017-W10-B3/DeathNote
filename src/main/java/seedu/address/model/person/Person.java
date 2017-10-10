@@ -118,6 +118,10 @@ public class Person implements ReadOnlyPerson {
         return remark.get();
     }
 
+    public void setWebsite(Website website) {
+        this.website.set(requireNonNull(website));
+    }
+
     @Override
     public ObjectProperty<Website> websiteProperty() {
         return website;
