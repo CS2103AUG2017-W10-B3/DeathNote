@@ -41,9 +41,18 @@ public class BrowserPanel extends UiPart<Region> {
         registerAsAnEventHandler(this);
     }
 
+    /**
+     * Loads a webpage if the person has a website added to his contact.
+     * If not, google the person
+     * @param person
+     */
     private void loadPersonPage(ReadOnlyPerson person) {
-        loadPage(GOOGLE_SEARCH_URL_PREFIX + person.getName().fullName.replaceAll(" ", "+")
-            + GOOGLE_SEARCH_URL_SUFFIX);
+        if (person.hasWebsite()) {
+            loadPage(person.getWebsite().value);
+        } else {
+            loadPage(GOOGLE_SEARCH_URL_PREFIX + person.getName().fullName.replaceAll(" ", "+")
+                    + GOOGLE_SEARCH_URL_SUFFIX);
+        }
     }
 
     public void loadPage(String url) {
