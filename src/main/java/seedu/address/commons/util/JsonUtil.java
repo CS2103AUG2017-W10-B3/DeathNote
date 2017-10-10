@@ -30,20 +30,20 @@ public class JsonUtil {
     private static final Logger logger = LogsCenter.getLogger(JsonUtil.class);
 
     private static ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules()
-            .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-            .setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE)
-            .setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
-            .registerModule(new SimpleModule("SimpleModule")
-                    .addSerializer(Level.class, new ToStringSerializer())
-                    .addDeserializer(Level.class, new LevelDeserializer(Level.class)));
+        .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+        .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+        .setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE)
+        .setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
+        .registerModule(new SimpleModule("SimpleModule")
+            .addSerializer(Level.class, new ToStringSerializer())
+            .addDeserializer(Level.class, new LevelDeserializer(Level.class)));
 
     static <T> void serializeObjectToJsonFile(File jsonFile, T objectToSerialize) throws IOException {
         FileUtil.writeToFile(jsonFile, toJsonString(objectToSerialize));
     }
 
     static <T> T deserializeObjectFromJsonFile(File jsonFile, Class<T> classOfObjectToDeserialize)
-            throws IOException {
+        throws IOException {
         return fromJsonString(FileUtil.readFromFile(jsonFile), classOfObjectToDeserialize);
     }
 
@@ -56,7 +56,7 @@ public class JsonUtil {
      * @throws DataConversionException if the file format is not as expected.
      */
     public static <T> Optional<T> readJsonFile(
-            String filePath, Class<T> classOfObjectToDeserialize) throws DataConversionException {
+        String filePath, Class<T> classOfObjectToDeserialize) throws DataConversionException {
         requireNonNull(filePath);
         File file = new File(filePath);
 

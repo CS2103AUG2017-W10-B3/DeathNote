@@ -105,7 +105,7 @@ public class SelectCommandTest {
         try {
             CommandResult commandResult = selectCommand.execute();
             assertEquals(String.format(SelectCommand.MESSAGE_SELECT_PERSON_SUCCESS, index.getOneBased()),
-                    commandResult.feedbackToUser);
+                commandResult.feedbackToUser);
         } catch (CommandException ce) {
             throw new IllegalArgumentException("Execution of command should not fail.", ce);
         }

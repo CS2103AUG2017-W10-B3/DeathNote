@@ -49,7 +49,7 @@ public abstract class AddressBookSystemTest {
 
     private static final List<String> COMMAND_BOX_DEFAULT_STYLE = Arrays.asList("text-input", "text-field");
     private static final List<String> COMMAND_BOX_ERROR_STYLE =
-            Arrays.asList("text-input", "text-field", CommandBox.ERROR_STYLE_CLASS);
+        Arrays.asList("text-input", "text-field", CommandBox.ERROR_STYLE_CLASS);
 
     private MainWindowHandle mainWindowHandle;
     private TestApp testApp;
@@ -188,7 +188,7 @@ public abstract class AddressBookSystemTest {
         URL expectedUrl;
         try {
             expectedUrl = new URL(GOOGLE_SEARCH_URL_PREFIX + selectedCardName.replaceAll(" ", "+")
-                    + GOOGLE_SEARCH_URL_SUFFIX);
+                + GOOGLE_SEARCH_URL_SUFFIX);
         } catch (MalformedURLException mue) {
             throw new AssertionError("URL expected to be valid.");
         }

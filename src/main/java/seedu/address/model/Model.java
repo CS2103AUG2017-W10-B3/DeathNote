@@ -44,7 +44,7 @@ public interface Model {
      * @throws PersonNotFoundException  if {@code target} could not be found in the list.
      */
     void updatePerson(ReadOnlyPerson target, ReadOnlyPerson editedPerson)
-            throws DuplicatePersonException, PersonNotFoundException;
+        throws DuplicatePersonException, PersonNotFoundException;
 
     /**
      * Returns an unmodifiable view of the filtered person list

@@ -64,8 +64,8 @@ public class UniqueTagList implements Iterable<Tag> {
     public void mergeFrom(UniqueTagList from) {
         final Set<Tag> alreadyInside = this.toSet();
         from.internalList.stream()
-                .filter(tag -> !alreadyInside.contains(tag))
-                .forEach(internalList::add);
+            .filter(tag -> !alreadyInside.contains(tag))
+            .forEach(internalList::add);
 
         assert CollectionUtil.elementsAreUnique(internalList);
     }
@@ -111,8 +111,8 @@ public class UniqueTagList implements Iterable<Tag> {
     public boolean equals(Object other) {
         assert CollectionUtil.elementsAreUnique(internalList);
         return other == this // short circuit if same object
-                || (other instanceof UniqueTagList // instanceof handles nulls
-                && this.internalList.equals(((UniqueTagList) other).internalList));
+            || (other instanceof UniqueTagList // instanceof handles nulls
+            && this.internalList.equals(((UniqueTagList) other).internalList));
     }
 
     /**

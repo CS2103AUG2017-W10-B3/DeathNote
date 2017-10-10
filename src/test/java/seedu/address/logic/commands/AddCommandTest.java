@@ -119,7 +119,7 @@ public class AddCommandTest {
 
         @Override
         public void updatePerson(ReadOnlyPerson target, ReadOnlyPerson editedPerson)
-                throws DuplicatePersonException {
+            throws DuplicatePersonException {
             fail("This method should not be called.");
         }
 

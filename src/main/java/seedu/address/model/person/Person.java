@@ -44,7 +44,7 @@ public class Person implements ReadOnlyPerson {
      */
     public Person(ReadOnlyPerson source) {
         this(source.getName(), source.getPhone(), source.getEmail(),
-                source.getAddress(), source.getRemark(), source.getTags());
+            source.getAddress(), source.getRemark(), source.getTags());
     }
 
     public void setName(Name name) {
@@ -154,8 +154,8 @@ public class Person implements ReadOnlyPerson {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof ReadOnlyPerson // instanceof handles nulls
-                && this.isSameStateAs((ReadOnlyPerson) other));
+            || (other instanceof ReadOnlyPerson // instanceof handles nulls
+            && this.isSameStateAs((ReadOnlyPerson) other));
     }
 
     @Override

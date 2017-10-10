@@ -36,7 +36,7 @@ public class RemarkCommandTest {
     @Test
     public void execute_addRemark_success() throws Exception {
         Person editedPerson = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
-                .withRemark("Some remark").build();
+            .withRemark("Some remark").build();
 
         RemarkCommand remarkCommand = prepareCommand(INDEX_FIRST_PERSON, editedPerson.getRemark().value);
 
@@ -69,7 +69,7 @@ public class RemarkCommandTest {
 
         ReadOnlyPerson personInFilteredList = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(personInFilteredList)
-                .withRemark("Some remark").build();
+            .withRemark("Some remark").build();
         RemarkCommand remarkCommand = prepareCommand(INDEX_FIRST_PERSON, editedPerson.getRemark().value);
 
         String expectedMessage = String.format(RemarkCommand.MESSAGE_ADD_REMARK_SUCCESS, editedPerson);

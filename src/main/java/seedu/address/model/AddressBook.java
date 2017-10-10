@@ -102,7 +102,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @see #syncMasterTagListWith(Person)
      */
     public void updatePerson(ReadOnlyPerson target, ReadOnlyPerson editedReadOnlyPerson)
-            throws DuplicatePersonException, PersonNotFoundException {
+        throws DuplicatePersonException, PersonNotFoundException {
         requireNonNull(editedReadOnlyPerson);
 
         Person editedPerson = new Person(editedReadOnlyPerson);
@@ -184,9 +184,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && this.persons.equals(((AddressBook) other).persons)
-                && this.tags.equalsOrderInsensitive(((AddressBook) other).tags));
+            || (other instanceof AddressBook // instanceof handles nulls
+            && this.persons.equals(((AddressBook) other).persons)
+            && this.tags.equalsOrderInsensitive(((AddressBook) other).tags));
     }
 
     @Override

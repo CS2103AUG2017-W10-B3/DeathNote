@@ -55,7 +55,7 @@ public class UniquePersonList implements Iterable<Person> {
      * @throws PersonNotFoundException  if {@code target} could not be found in the list.
      */
     public void setPerson(ReadOnlyPerson target, ReadOnlyPerson editedPerson)
-            throws DuplicatePersonException, PersonNotFoundException {
+        throws DuplicatePersonException, PersonNotFoundException {
         requireNonNull(editedPerson);
 
         int index = internalList.indexOf(target);
@@ -111,8 +111,8 @@ public class UniquePersonList implements Iterable<Person> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof UniquePersonList // instanceof handles nulls
-                && this.internalList.equals(((UniquePersonList) other).internalList));
+            || (other instanceof UniquePersonList // instanceof handles nulls
+            && this.internalList.equals(((UniquePersonList) other).internalList));
     }
 
     @Override

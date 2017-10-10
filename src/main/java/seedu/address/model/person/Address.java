@@ -11,7 +11,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class Address {
 
     public static final String MESSAGE_ADDRESS_CONSTRAINTS =
-            "Person addresses can take any values, and it should not be blank";
+        "Person addresses can take any values, and it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,
@@ -49,8 +49,8 @@ public class Address {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Address // instanceof handles nulls
-                && this.value.equals(((Address) other).value)); // state check
+            || (other instanceof Address // instanceof handles nulls
+            && this.value.equals(((Address) other).value)); // state check
     }
 
     @Override
