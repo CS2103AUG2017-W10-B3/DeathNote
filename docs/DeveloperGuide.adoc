@@ -254,8 +254,10 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+=== Backend Structures
+
 // tag::undoredo[]
-=== Undo/Redo mechanism
+==== Undo/Redo mechanism
 
 The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides inside `LogicManager`. It supports undoing and redoing of commands that modifies the state of the address book (e.g. `add`, `edit`). Such commands will inherit from `UndoableCommand`.
 
@@ -339,7 +341,7 @@ The following activity diagram summarize what happens inside the `UndoRedoStack`
 
 image::UndoRedoActivityDiagram.png[width="200"]
 
-==== Design Considerations
+===== Design Considerations
 
 **Aspect:** Implementation of `UndoableCommand` +
 
@@ -390,7 +392,7 @@ image::UndoRedoActivityDiagram.png[width="200"]
 **Cons:** Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things. +
 // end::undoredo[]
 
-=== Open new AddressBook mechanism
+==== Open new AddressBook mechanism
 
 image::OpenAddressBookEvent.png[width="800"]
 
@@ -398,13 +400,69 @@ As you can see from the diagram, when the `Open` button is clicked in the Applic
 
 This loads the selected XML file which opens a new address book with contacts from selected XML file.
 
-==== Design considerations
+===== Design considerations
 
 **Aspect:** Architectural Design +
 **Alternative 1 (current choice):** Event-Driven Architectural Style +
 **Alternative 2:** N-Tier Architectural Design +
 
-=== Add new person with optional fields
+==== Theme mechanism
+
+
+
+Theme mechanism uses a singleton class called `UiStyle` which stores the scene of the application in it. +
+This allows the modification of the scene's css at runtime.
+
+The class `UiStyle` requires the scene to be set at `MainWindow` class for it to be used to edit themes.
+
+----
+public class UiStyle {
+...
+    private static Scene scene = null;
+
+     public static void setScene(Scene s) {
+        scene = s;
+        setToDarkTheme(); // Default theme
+    }
+
+    public static void setToLightTheme() {
+        scene.getStylesheets().remove(DARK_THEME_STYLE);
+        scene.getStylesheets().add(LIGHT_THEME_STYLE);
+    }
+
+    public static void setToDarkTheme() {
+        scene.getStylesheets().remove(LIGHT_THEME_STYLE);
+        scene.getStylesheets().add(DARK_THEME_STYLE);
+    }
+}
+----
+
+Example of calling the application to change to light theme:
+
+----
+UiStyle.getInstance().setToLightTheme();
+----
+
+image::ThemeSequenceDiagram.png[width="800"]
+
+Although this function can be called anywhere, it should only be called when `ThemeCommand` is issued.
+
+===== Design considerations
+
+**Aspect:** Implementation of theme +
+
+**Alternative 1 (current choice):** Pass the scene of the application into a singleton class dedicated for UI usage only +
+**Pros:** Changing the theme can be called easily +
+**Cons:** Changing of the theme can be called anywhere by any class +
+
+**Alternative 2:** Passing the scene down from `MainApp` class to `ThemeCommand` class +
+**Pros:** Only `ThemeCommand` class will be able to modify the theme +
+**Cons:** Very tedious as `ThemeCommand` class is very far down the architecture +
+
+
+=== Implementation Guide
+
+==== Add new person with optional fields
 
 Adding new person in the application requires only name. All other fields are optional. This is done by allowing the creation of
 `Phone`, `Email`, etc. objects with `null` parameter.
@@ -444,7 +502,7 @@ checks of `null` in its respective class:
     }
 ----
 
-==== Design considerations
+===== Design considerations
 
 **Aspect:** Nature of field object when dealing with `null` +
 
@@ -457,7 +515,7 @@ can have `null` in their `value` field. +
 **Pros:** Only little modification needed to make in `Model` component. +
 **Cons:** Since many components rely on each field object being non-null, this design will fail the other components. +
 
-=== Adding new parameters to person
+==== Adding new parameters to person
 
 The general Steps to take are as follows: +
 
@@ -510,7 +568,7 @@ Please refer to the following links to get an idea on how to add a new parameter
 https://github.com/CS2103AUG2017-W10-B3/main/pull/16/files[Adding website parameter] +
 https://github.com/CS2103AUG2017-W10-B3/main/pull/8/files[Adding birthday parameter]
 
-==== Design considerations
+===== Design considerations
 
 **Aspect:** Implementation of a new variable. +
 
@@ -522,60 +580,7 @@ https://github.com/CS2103AUG2017-W10-B3/main/pull/8/files[Adding birthday parame
 **Pros:** Implementation is much easier and it does not affect tests in any way. +
 **Cons:** It is not consistent with the variables in `Person` +
 
-=== Theme mechanism
-
-
-
-Theme mechanism uses a singleton class called `UiStyle` which stores the scene of the application in it. +
-This allows the modification of the scene's css at runtime.
-
-The class `UiStyle` requires the scene to be set at `MainWindow` class for it to be used to edit themes.
-
-----
-public class UiStyle {
-...
-    private static Scene scene = null;
-
-     public static void setScene(Scene s) {
-        scene = s;
-        setToDarkTheme(); // Default theme
-    }
-
-    public static void setToLightTheme() {
-        scene.getStylesheets().remove(DARK_THEME_STYLE);
-        scene.getStylesheets().add(LIGHT_THEME_STYLE);
-    }
-
-    public static void setToDarkTheme() {
-        scene.getStylesheets().remove(LIGHT_THEME_STYLE);
-        scene.getStylesheets().add(DARK_THEME_STYLE);
-    }
-}
-----
-
-Example of calling the application to change to light theme:
-
-----
-UiStyle.getInstance().setToLightTheme();
-----
-
-image::ThemeSequenceDiagram.png[width="800"]
-
-Although this function can be called anywhere, it should only be called when `ThemeCommand` is issued.
-
-==== Design considerations
-
-**Aspect:** Implementation of theme +
-
-**Alternative 1 (current choice):** Pass the scene of the application into a singleton class dedicated for UI usage only +
-**Pros:** Changing the theme can be called easily +
-**Cons:** Changing of the theme can be called anywhere by any class +
-
-**Alternative 2:** Passing the scene down from `MainApp` class to `ThemeCommand` class +
-**Pros:** Only `ThemeCommand` class will be able to modify the theme +
-**Cons:** Very tedious as `ThemeCommand` class is very far down the architecture +
-
-=== Logging
+==== Logging
 
 We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
 
@@ -590,7 +595,7 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 * `INFO` : Information showing the noteworthy actions by the App
 * `FINE` : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size
 
-=== Configuration
+==== Configuration
 
 Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: `config.json`).
 
