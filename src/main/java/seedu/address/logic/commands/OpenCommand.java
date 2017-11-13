@@ -20,7 +20,7 @@ public class OpenCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Open a different DeathNote. \n"
-        + "Paremeters: LOCATION \n"
+        + "Paremeters: PATH \n"
         + "Example: " + COMMAND_WORD + " C:\\Users\\crispy\\Downloads\\DeathNote.xml";
 
     public static final String MESSAGE_OPEN_DEATHNOTE_SUCCESS = "Opened DeathNote: %1$s";
