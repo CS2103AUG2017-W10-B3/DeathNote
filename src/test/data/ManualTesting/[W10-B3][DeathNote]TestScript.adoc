@@ -82,9 +82,6 @@ Example: add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #0
 * `add n/Abel p/98732612 e/Abel@gmail.com a/311, Clementi Ave 2, #05-33 b/19/03/1992 w/http://www.abel.com/` +
 *Expected Output:* New person added: Abel Phone: 98732612 Email: Abel@gmail.com Address: 311, Clementi Ave 2, #05-33 Birthday: 19/03/1992 Remarks:  Website: http://www.abel.com
 
-* `add n/Abel p/98732612 e/Abel@gmail.com a/311, Clementi Ave 2, #05-33 b/19/03/1992 w/http://www.abel.com/ t/friend` +
-*Expected Output:* New person added: Abel Phone: 98732612 Email: Abel@gmail.com Address: 311, Clementi Ave 2, #05-33 Birthday: 19/03/1992 Remarks:  Website: http://www.abel.com Tags: friend
-
 * `add n/Abel pic/(Path to a picture in png format e.g.C:\picture\Abel.png)` +
 *Expected Output:* New person added: Abel Remarks:  Picture: 043d0024-8f59-4c5e-ada6-8d58262b4d8f.png +
 *To tester:* 043d0024-8f59-4c5e-ada6-8d58262b4d8f is a unique id. +
