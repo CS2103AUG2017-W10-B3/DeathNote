@@ -48,7 +48,7 @@ Opens a window with a help document +
     Format:help
 
 * `help` +
-*Expected Output:* Opened help window.
+*Expected Output:* Opened help window. +
 *Observe:* A new window appears showing a guide on how all commands are used.
 
 === Add command
@@ -86,7 +86,9 @@ Example: add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #0
 *Expected Output:* New person added: Abel Phone: 98732612 Email: Abel@gmail.com Address: 311, Clementi Ave 2, #05-33 Birthday: 19/03/1992 Remarks:  Website: http://www.abel.com Tags: friend
 
 * `add n/Abel pic/(Path to a picture in png format e.g.C:\picture\Abel.png)` +
-*Observe:* Contact has been added and there will be a picture added to the contact
+*Expected Output:* New person added: Abel Remarks:  Picture: 043d0024-8f59-4c5e-ada6-8d58262b4d8f.png +
+*To tester:* 043d0024-8f59-4c5e-ada6-8d58262b4d8f is a unique id. +
+*Observe:* Contact has been added and there will be a picture added to the contact +
 
 === Remark command
 
@@ -98,19 +100,19 @@ Adds or edits remarks to the person identified by the INDEX +
 
     add n/Abel
 
-* `remark`
+* `remark` +
 *Expected Output:* Invalid command format!
 remark: Edits the remark of the person identified by the index number used in the last person listing. Existing remark will be overwritten by the input.
 Parameters: INDEX (must be a positive integer) r/[REMARK]
 
-* `remark 2`
+* `remark 2` +
 *Expected Output:* The person index provided is invalid
 
-* `remark 1 r/Likes to have coffee`
+* `remark 1 r/Likes to have coffee` +
 *Expected Output:* Added remark to Person: Abel Remarks: Has small eyes
 
-* `remark r/`
-*Expected Output: Removed remark from Person: Abel Remarks:*
+* `remark r/` +
+*Expected Output:* Removed remark from Person: Abel Remarks:
 
 === Edit command
 
@@ -126,7 +128,7 @@ Edits an existing person in DeathNote. +
     add n/Charlotte a/Jurong p/9876543 t/friend t/colleague
     add n/Denise a/Clementi p/98789032 e/Denise@gmail.com
 
-* `edit`
+* `edit` +
 *Expected Output:* Invalid command format!
 edit: Edits the details of the person identified by the index number used in the last person listing. Existing values will be overwritten by the input values.
 Parameters: INDEX (must be a positive integer) [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [w/WEBSITE] [pic/PICTURE] [b/DD/MM/YYYY] [t/TAG]...
@@ -134,7 +136,7 @@ Example: edit 1 p/91234567 e/johndoe@example.com
 
 === Delete command
 
-Deletes the specified person from DeathNote.+
+Deletes the specified person from DeathNote. +
 
     Format: delete INDEX
 
@@ -142,16 +144,16 @@ Deletes the specified person from DeathNote.+
 
     add n/Abel
 
-* `delete`
+* `delete` +
 *Expected Output:* Invalid command format!
 delete: Deletes the person identified by the index number used in the last person listing.
 Parameters: INDEX (must be a positive integer)
 Example: delete 1
 
-* `delete 2`
+* `delete 2` +
 *Expected Output:* The person index provided is invalid
 
-* `delete 1`
+* `delete 1` +
 *Expected Output:* Deleted Person: Abel Remarks:
 
 === Find command
@@ -176,31 +178,31 @@ Finds persons who matches the given attributes. +
 *Expected Output:* 2 persons listed! +
 *Observe:* Contacts Abel and Abe MisoSoup will be listed +
 
-* `find n/Abe b/12/12/1993`
+* `find n/Abe b/12/12/1993` +
 *Expected Output:* 1 persons listed! +
 *Observe:* Contact Abel will be listed +
 
-* `find e/Bernice@gmail.com`
+* `find e/Bernice@gmail.com` +
 *Expected Output:* 1 persons listed! +
 *Observe:* Contact Bernice will be listed +
 
-* `find t/friend`
+* `find t/friend` +
 *Expected Output:* 3 persons listed! +
 *Observe:* Contact Abel, Bernice and Charlotte will be listed +
 
-* `find t/friend t/colleague`
+* `find t/friend t/colleague` +
 *Expected Output:* 1 persons listed! +
 *Observe:* Contact Charlotte will be listed +
 
-* `find a/Jurong`
+* `find a/Jurong` +
 *Expected Output:* 1 persons listed! +
 *Observe:* Contact Charlotte will be listed +
 
-* `find a/Juro`
+* `find a/Juro` +
 *Expected Output:* 0 persons listed! +
 *Observe:* No contacts will be listed +
 
-* `find t/ frie`
+* `find t/ frie` +
 *Expected Output:* 0 persons listed! +
 *Observe:* No contacts will be listed +
 
@@ -225,12 +227,12 @@ Parameters: INDEX (must be a positive integer)
 Example: select 1
 
 * `select 1` +
-*Expected Output:* Selected Person: 1
-*Observe:* Browser will google "Abel"
+*Expected Output:* Selected Person: 1 +
+*Observe:* Browser will google "Abel" +
 
 * `select 3` +
-*Expected Output:* Selected Person: 3
-*Observe:* Browser will load https://www.berniceyu.com/
+*Expected Output:* Selected Person: 3 +
+*Observe:* Browser will load https://www.berniceyu.com/ +
 
 * `select 6` +
 *Expected Output:* The person index provided is invalid
@@ -252,7 +254,7 @@ Shows a list of all persons in DeathNote. +
 * `list` +
 *Observe:* Contacts will be shown
 
-=== Create command
+=== New command
 
 Opens a new instance of DeathNote.
 
@@ -261,13 +263,13 @@ Opens a new instance of DeathNote.
 * `new` +
 *Expected Output:* Invalid command format!
 new: Open a new DeathNote.
-Paremeters: FILEPATH
+Paremeters: PATH
 Example: new C:\Users\crispy\Downloads\NewDeathNote.xml
 
 * `new C:\DeathNote\newDeathNote` +
 *Expected Output:* Invalid command format!
 new: Open a new DeathNote.
-Paremeters: FILEPATH
+Paremeters: PATH
 Example: new C:\Users\crispy\Downloads\NewDeathNote.xml
 
 * `new C:\DeathNote\newDeathNote.xml` +
@@ -276,7 +278,7 @@ Example: new C:\Users\crispy\Downloads\NewDeathNote.xml
 In the folder C:\DeathNote there will be an newDeathNote.xml when the application saves
 
 * `new C:\DeathNote\newDeathNote.xml` (On a location where newDeathNote.xml exists) +
-*Expected Output: Unable to create new DeathNote - file already exists*
+*Expected Output:* Unable to create new DeathNote - file already exists
 
 === Open command
 
@@ -292,13 +294,13 @@ Opens another existing instance of DeathNote.
 * `open` +
 *Expected Output:* Invalid command format!
 open: Open a different DeathNote.
-Paremeters: LOCATION
+Paremeters: PATH
 Example: open C:\Users\crispy\Downloads\DeathNote.xml
 
-`open C:\DeathNote\newDeathNote` +
+* `open C:\DeathNote\newDeathNote` +
 *Expected output:* Invalid command format!
 open: Open a different DeathNote.
-Paremeters: LOCATION
+Paremeters: PATH
 Example: open C:\Users\crispy\Downloads\DeathNote.xml
 
 * `open C:\DeathNote\newDeathNote.xml`
@@ -320,8 +322,8 @@ Clears all entries from DeathNote.
 
   Format: clear
 
-`clear`
-*Expected Output:* Address book has been cleared!
+* `clear` +
+*Expected Output:* Address book has been cleared! +
 *Observe:* There will be no listed  contacts
 
 === Undo command
@@ -332,22 +334,22 @@ Restores the DeathNote to the state before the previous _undoable_ command was e
 
 *Each test must be done in sequence. Ensure that contact list is empty (To follow our test)*
 
-* Undo test 1 +
+* *Undo test 1* +
 *Ensure that you have have not entered any commands*
 . `undo` +
 *Expected Output:* No more commands to undo!
 
-* Undo test 2 +
+* *Undo test 2* +
 . `add n/Abel` +
 *Expected Output:* New person added: Abel Remarks: +
 *Observe:* Contact list will show Abel after add command. +
 . `undo` +
-*Expected Output:* Undo success!
-*Observe:* Contact list will not show Abel after undo command
+*Expected Output:* Undo success! +
+*Observe:* Contact list will not show Abel after undo command +
 . `undo` +
 *Expected Output:* No more commands to undo! +
 
-* Undo test 3 +
+* *Undo test 3* +
 . `add n/Abel` +
 *Expected Output:* New person added: Abel Remarks: +
 *Observe:* Contact list will show Abel after add command. +
@@ -369,14 +371,14 @@ Reverses the most recent `undo` command. +
 
 *Each test must be done in sequence. Ensure that contact list is empty (To follow our test)*
 
-* Redo test 1 +
+* *Redo test 1* +
 *Ensure that you have have not entered any commands*
 . `redo` +
 *Expected Output:* No more commands to redo!
 
-* Redo test 2 +
+* *Redo test 2* +
 . `add n/Abel` +
-*Expected Output:* New person added: Abel Remarks:
+*Expected Output:* New person added: Abel Remarks: +
 *Observe:* Contact list will show Abel after add command. +
 . `undo` +
 *Expected Output:* Undo success! +
@@ -387,7 +389,7 @@ Reverses the most recent `undo` command. +
 . `redo` +
 *Expected Output:* No more commands to redo!
 
-* Redo test 3 +
+* *Redo test 3* +
 . `add n/Abel` +
 *Expected Output:* New person added: Abel Remarks: +
 *Observe:* Contact list will show Abel after add command. +
@@ -419,31 +421,26 @@ Lists all the commands entered by user from the start of app launch. +
 
   Format: history
 
-*History Test 1* +
-*Ensure you have not entered any commands*
-
+* *History Test 1*
 . `history` +
-
 *Expected Output:* You have not yet entered any commands. +
 
-History Test 2* +
-
+* *History Test 2*
 . `history` +
-
-*Expected Output:* +
-Entered commands (from most recent to earliest): +
-history
+*Expected Output:* You have not yet entered any commands. +
+. `history` +
+*Expected Output* Entered commands (from most recent to earliest): history +
 
 === Birthday Alarm Command
 
-Opens a window showing a table of upcoming birthdays corresponding to names. *
+Opens a window showing a table of upcoming birthdays corresponding to names.
 
     Format: reminders
 
-*Birthday Alarm Command Test 1* +
+* *Birthday Alarm Command Test 1* +
 *Ensure you have at least one person added during or after the current month*
 
-.`reminders` +
+* `reminders` +
 
 *Expected Output:* Opened Reminders Window +
 *Observe:* The Reminders Window will popup showing the upcoming birthdays of your contacts*
@@ -454,17 +451,13 @@ Changes the current theme of Deathnote
 
     Format: theme THEMENAME
 
-*Theme Command Test 1* +
-
-. `theme holy `
-
+* `theme holy ` +
 *Expected Output:* Theme has been changed. +
-*Observe:* The window theme changes to the holy theme.
+*Observe:* The window theme changes to the holy theme. +
 
-. `theme evil`
-
+* `theme evil` +
 *Expected Output:* Theme has been changed +
-*Observe: * The window theme changes to the evil theme.
+*Observe: * The window theme changes to the evil theme. +
 
 == Invalid Testing
 
@@ -472,228 +465,194 @@ Some commands have validation. You may use the following tests to check if inval
 
 === Add Command
 
-*Invalid Add Command Test 1* +
+* *Invalid Add Command Test 1* +
 Checks if duplicate people can be added. +
 
 . `add n/Adeeb`
-. `add n/Adeeb`
-
+. `add n/Adeeb` +
 *Expected Output:* This person already exists in the address book +
 
-*Invalid Add Command Test 2* +
+* *Invalid Add Command Test 2* +
 Checks if duplicate people different tags can be added. +
 
 . `add n/Adeeb t/best`
-. `add n/Adeeb t/worst`
-
+. `add n/Adeeb t/worst` +
 *Expected Output:* This person already exists in the address book +
 
-*Invalid Add Command Test 3* +
+* *Invalid Add Command Test 3* +
 Checks if the name is valid. +
 
-. `add n/`
-
+. `add n/` +
 *Expected Output:* Person names should only contain alphanumeric characters and spaces, and it should not be blank +
 
-. `add n/James&`
-
+. `add n/James&` +
 *Expected Output:* Person names should only contain alphanumeric characters and spaces, and it should not be blank +
 
-*Invalid Add Command Test 4* +
+* *Invalid Add Command Test 4* +
 Checks if the phone number provided is valid. +
 
-. `add n/James p/7`
-
+. `add n/James p/7` +
 *Expected Output:* Phone numbers can only contain numbers, and should be at least 3 digits long +
 
-. `add n/James p/77*77777`
-
+. `add n/James p/77*77777` +
 *Expected Output:* Phone numbers can only contain numbers, and should be at least 3 digits long +
 
-. `add n/James p/abdce`
-
+. `add n/James p/abdce` +
 *Expected Output:* Phone numbers can only contain numbers, and should be at least 3 digits long +
 
-*Invalid Add Command Test 5*
+* *Invalid Add Command Test 5*
 Checks if the email provided is valid. +
 
-. `add n/James e/mail!yahoo`
+. `add n/James e/mail!yahoo` +
+*Expected Output:* Person emails should be 2 alphanumeric/period strings separated by '@' +
 
-*Expected Output*: Person emails should be 2 alphanumeric/period strings separated by '@' +
+. `add n/James e/@@@@` +
+*Expected Output:* Person emails should be 2 alphanumeric/period strings separated by '@' +
 
-. `add n/James e/@@@@`
-
-*Expected Output*: Person emails should be 2 alphanumeric/period strings separated by '@' +
-
-*Invalid Add Command Test 6*
+* *Invalid Add Command Test 6*
 Checks if address is blank if used. +
 
-. `add n/James a/`
+. `add n/James a/` +
+*Expected Output:* Person addresses can take any values, and it should not be blank +
 
-*Expected Output*: Person addresses can take any values, and it should not be blank +
-
-*Invalid Add Command Test 7*
+* *Invalid Add Command Test 7*
 Checks if the tag used is valid. +
 
-. `add n/James t/d**k`
+. `add n/James t/d**k` +
+*Expected Output:* Tags names should be alphanumeric +
 
-*Expected Output*: Tags names should be alphanumeric +
-
-*Invalid Add Command Test 8*
+* *Invalid Add Command Test 8*
 Checks if the birthday provided is in the correct format and valid. *
 
-. `add n/James b/29/2/2013`
+. `add n/James b/29/2/2013` +
+*Expected Output:* Person Birthday should be in the format of DD/MM/YYYY and also valid.
 
-*Expected Output*: Person Birthday should be in the format of DD/MM/YYYY and also valid.
+. `add n/James b/` +
+*Expected Output:* Person Birthday should be in the format of DD/MM/YYYY and also valid.
 
-. `add n\James b/`
+. `add n/James b/199/02/20111` +
+*Expected Output:* Person Birthday should be in the format of DD/MM/YYYY and also valid.
 
-*Expected Output*: Person Birthday should be in the format of DD/MM/YYYY and also valid.
-
-. `add n\James b/199/02/20111`
-
-*Expected Output*: Person Birthday should be in the format of DD/MM/YYYY and also valid.
-
-*Invalid Add Command Test 9*
+* *Invalid Add Command Test 9*
 Checks if the website provided is in the correct format. *
 
-. `add n/James w/www.foobar.com`
-
-Website should contain a prefix of http:// https://.
+. `add n/James w/www.foobar.com` +
+*Expected Output:* Website should contain a prefix of http:// https://.
 
 === Delete Command
 
-*Invalid Delete Command Test 1*
+* *Invalid Delete Command Test 1*
 Delete will only work within the bounds of the current displayed list +
 *Ensure that you have at least 2 people in Deathnote. E.g. James and Chris* +
 
 . `find n/Chris`
 . `delete 2`
 
-*Expected Output*: The person index provided is invalid +
+*Expected Output:* The person index provided is invalid +
 
 === Edit Command
 
-*Invalid Edit Command Test 1*
+* *Invalid Edit Command Test 1*
 Edit will only work within the bounds of the current displayed list +
 *Ensure that you have at least 2 people in Deathnote. E.g. James and Chris* +
 
 . `find n/Chris`
-. `edit 2 b/15/02/1992`
+. `edit 2 b/15/02/1992` +
+*Expected Output:* The person index provided is invalid +
 
-*Expected Output*: The person index provided is invalid +
-
-*Invalid Edit Command Test 2*
+* *Invalid Edit Command Test 2*
 Edit is based on base 1 index +
 
-. `edit 0 b/15/02/1992`
+. `edit 0 b/15/02/1992` +
+*Expected Output:* The person index provided is invalid +
 
-*Expected Output*: The person index provided is invalid +
-
-*Invalid Edit Command Test 3*
+* *Invalid Edit Command Test 3*
 Edit is based on base 1 index +
 
-. `edit -1 b/15/02/1992`
+. `edit -1 b/15/02/1992` +
+*Expected Output:* The person index provided is invalid +
 
-*Expected Output*: The person index provided is invalid +
-
-*Invalid Edit Command Test 4*
+* *Invalid Edit Command Test 4*
 Edit is based on base 1 index +
 *Ensure that your list has at most 3 people*
 
-. `edit 3 b/15/02/1992`
+. `edit 3 b/15/02/1992` +
+*Expected Output:* The person index provided is invalid +
 
-*Expected Output*: The person index provided is invalid +
-
-*Invalid Edit Command Test 5*
+* *Invalid Edit Command Test 5*
 Edit is based on base 1 index +
 *Ensure that your list has at most 3 people*
 
-. `edit b/15/02/1992`
+. `edit b/15/02/1992` +
+*Expected Output:* The person index provided is invalid +
 
-*Expected Output*: The person index provided is invalid +
-
-*Invalid Edit Command Test 6*
+* *Invalid Edit Command Test 6*
 Edit needs at least one field to edit +
 
-. `edit 1`
+. `edit 1` +
+*Expected Output:* At least one field to edit must be provided. +
 
-*Expected Output*: At least one field to edit must be provided. +
-
-*Invalid Edit Command Test 7* +
+* *Invalid Edit Command Test 7* +
 Checks if the name is valid. +
 
-. `edit 1 n/`
-
+. `edit 1 n/` +
 *Expected Output:* Person names should only contain alphanumeric characters and spaces, and it should not be blank +
 
-. `edit 1 n/James&`
-
+. `edit 1 n/James&` +
 *Expected Output:* Person names should only contain alphanumeric characters and spaces, and it should not be blank +
 
-*Invalid Edit Command Test 8* +
+* *Invalid Edit Command Test 8* +
 Checks if the phone number provided is valid. +
 
-. `edi 1 p/7`
-
+. `edit 1 p/7` +
 *Expected Output:* Phone numbers can only contain numbers, and should be at least 3 digits long +
 
-. `edit 1 p/77*77777`
-
+. `edit 1 p/77*77777` +
 *Expected Output:* Phone numbers can only contain numbers, and should be at least 3 digits long +
 
-. `edit 1 p/abdce`
-
+. `edit 1 p/abdce` +
 *Expected Output:* Phone numbers can only contain numbers, and should be at least 3 digits long +
 
-*Invalid Edit Command Test 9*
+* *Invalid Edit Command Test 9*
 Checks if the email provided is valid. +
 
-. `edit 1 e/mail!yahoo`
+. `edit 1 e/mail!yahoo` +
+*Expected Output:* Person emails should be 2 alphanumeric/period strings separated by '@' +
 
-*Expected Output*: Person emails should be 2 alphanumeric/period strings separated by '@' +
+. `edit 1 e/@@@@` +
+*Expected Output:* Person emails should be 2 alphanumeric/period strings separated by '@' +
 
-. `edit 1 e/@@@@`
-
-*Expected Output*: Person emails should be 2 alphanumeric/period strings separated by '@' +
-
-*Invalid Edit Command Test 10*
+* *Invalid Edit Command Test 10*
 Checks if address is blank if used. +
 
-. `edit 1 a/`
+. `edit 1 a/` +
+*Expected Output:* Person addresses can take any values, and it should not be blank +
 
-*Expected Output*: Person addresses can take any values, and it should not be blank +
-
-*Invalid Edit Command Test 11*
+* *Invalid Edit Command Test 11*
 Checks if the tag used is valid. +
 
-. `edit 1 t/d**k`
+. `edit 1 t/d**k` +
+*Expected Output:* Tags names should be alphanumeric +
 
-*Expected Output*: Tags names should be alphanumeric +
-
-*Invalid Edit Command Test 12*
+* *Invalid Edit Command Test 12*
 Checks if the birthday provided is in the correct format and valid. *
 
-. `edit 1 b/29/2/2013`
+. `edit 1 b/29/2/2013` +
+*Expected Output:* Person Birthday should be in the format of DD/MM/YYYY and also valid.
 
-*Expected Output*: Person Birthday should be in the format of DD/MM/YYYY and also valid.
+. `edit 1 b/ +
+*Expected Output:* Person Birthday should be in the format of DD/MM/YYYY and also valid.
 
-. `edit 1 b/
+. `edit 1 b/199/02/20111` +
+*Expected Output:* Person Birthday should be in the format of DD/MM/YYYY and also valid.
 
-*Expected Output*: Person Birthday should be in the format of DD/MM/YYYY and also valid.
-
-. `edit 1 b/199/02/20111`
-
-*Expected Output*: Person Birthday should be in the format of DD/MM/YYYY and also valid.
-
-*Invalid Edit Command Test 13*
+* *Invalid Edit Command Test 13*
 Checks if the website provided is in the correct format. *
 
-. `edit 1 w/www.foobar.com`
-
+. `edit 1 w/www.foobar.com` +
 Website should contain a prefix of http:// https://.
 
-*Invalid Edit Command Test 14*
+* *Invalid Edit Command Test 14*
 Checks if editting a person results in a duplicate +
 *Do these commands in sequence in an empty DeathNote*
 
@@ -701,9 +660,9 @@ Checks if editting a person results in a duplicate +
 . `add n/Jeremy`
 . `edit 1 n/Adeeb`
 
-*Expected Output*: This person already exists in the address book.
+*Expected Output:* This person already exists in the address book.
 
-*Invalid Edit Command Test 14*
+* *Invalid Edit Command Test 15*
 Checks if editting a person results in a duplicate just with different tags. +
 *Do these commands in sequence in an empty DeathNote*
 
@@ -711,18 +670,17 @@ Checks if editting a person results in a duplicate just with different tags. +
 . `add n/Jeremy t/leader`
 . `edit 1 n/Adeeb`
 
-*Expected Output*: This person already exists in the address book.
+*Expected Output:* This person already exists in the address book.
 
 === Miscellaneous
 
 Using a command that does not exist will give an error.
 
-*Misc Command Test 1*
+* *Misc Command Test 1*
 
-. `misc`
+. `misc` +
+*Expected Output:* Unknown Command
 
-*Expected Output*: Unknown Command
+. `ClEaR` +
+*Expected Output:* Unknown Command
 
-. `ClEaR`
-
-*Expected Output*: Unknown Command
