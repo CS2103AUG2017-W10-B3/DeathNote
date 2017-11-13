@@ -212,7 +212,7 @@ Selects the person identified by the index number used in the last person listin
 *Ensure that there is at least 1 contact in DeathNote, in this case we have a few contacts*
 
   add n/Abel b/12/12/1993 t/friend
-  add n/Abe MisoSoup w/
+  add n/Abe MisoSoup
   add n/Bernice w/https://berniceyu.com/ e/Bernice@gmail.com b/10/12/1990 t/friend
   add n/Charlotte a/Jurong p/9876543 t/friend t/colleague
   add n/Denise a/Clementi p/98789032 e/Denise@gmail.com
@@ -243,7 +243,7 @@ Shows a list of all persons in DeathNote. +
 *Ensure that there is at least 1 contact in DeathNote, in this case we have a few contacts*
 
   add n/Abel b/12/12/1993 t/friend
-  add n/Abe MisoSoup w/
+  add n/Abe MisoSoup
   add n/Bernice w/https://berniceyu.com/ e/Bernice@gmail.com b/10/12/1990 t/friend
   add n/Charlotte a/Jurong p/9876543 t/friend t/colleague
   add n/Denise a/Clementi p/98789032 e/Denise@gmail.com
@@ -260,13 +260,13 @@ Opens a new instance of DeathNote.
 * `new` +
 *Expected Output:* Invalid command format!
 new: Open a new DeathNote.
-Paremeters: PATH
+Parameters: PATH
 Example: new C:\Users\crispy\Downloads\NewDeathNote.xml
 
 * `new C:\DeathNote\newDeathNote` +
 *Expected Output:* Invalid command format!
 new: Open a new DeathNote.
-Paremeters: PATH
+Parameters: PATH
 Example: new C:\Users\crispy\Downloads\NewDeathNote.xml
 
 * `new C:\DeathNote\newDeathNote.xml` +
@@ -274,7 +274,7 @@ Example: new C:\Users\crispy\Downloads\NewDeathNote.xml
 *Observe:* DeathNote will reload with a new sample list of contacts. +
 In the folder C:\DeathNote there will be an newDeathNote.xml when the application saves
 
-* `new C:\DeathNote\newDeathNote.xml` (On a location where newDeathNote.xml exists) +
+* `new C:\DeathNote\newDeathNote.xml` (On a location where newDeathNote.xml exists with at least one contact) +
 *Expected Output:* Unable to create new DeathNote - file already exists
 
 === Open command
@@ -291,13 +291,13 @@ Opens another existing instance of DeathNote.
 * `open` +
 *Expected Output:* Invalid command format!
 open: Open a different DeathNote.
-Paremeters: PATH
+Parameters: PATH
 Example: open C:\Users\crispy\Downloads\DeathNote.xml
 
 * `open C:\DeathNote\newDeathNote` +
 *Expected output:* Invalid command format!
 open: Open a different DeathNote.
-Paremeters: PATH
+Parameters: PATH
 Example: open C:\Users\crispy\Downloads\DeathNote.xml
 
 * `open C:\DeathNote\newDeathNote.xml`
