@@ -106,9 +106,9 @@ Parameters: INDEX (must be a positive integer) r/[REMARK]
 *Expected Output:* The person index provided is invalid
 
 * `remark 1 r/Likes to have coffee` +
-*Expected Output:* Added remark to Person: Abel Remarks: Has small eyes
+*Expected Output:* Added remark to Person: Abel Remarks: Likes to have coffee
 
-* `remark r/` +
+* `remark 1 r/` +
 *Expected Output:* Removed remark from Person: Abel Remarks:
 
 === Edit command
