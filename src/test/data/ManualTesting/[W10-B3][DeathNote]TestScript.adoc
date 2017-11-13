@@ -82,9 +82,6 @@ Example: add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #0
 * `add n/Abel p/98732612 e/Abel@gmail.com a/311, Clementi Ave 2, #05-33 b/19/03/1992 w/http://www.abel.com/` +
 *Expected Output:* New person added: Abel Phone: 98732612 Email: Abel@gmail.com Address: 311, Clementi Ave 2, #05-33 Birthday: 19/03/1992 Remarks:  Website: http://www.abel.com
 
-* `add n/Abel p/98732612 e/Abel@gmail.com a/311, Clementi Ave 2, #05-33 b/19/03/1992 w/http://www.abel.com/ t/friend` +
-*Expected Output:* New person added: Abel Phone: 98732612 Email: Abel@gmail.com Address: 311, Clementi Ave 2, #05-33 Birthday: 19/03/1992 Remarks:  Website: http://www.abel.com Tags: friend
-
 * `add n/Abel pic/(Path to a picture in png format e.g.C:\picture\Abel.png)` +
 *Expected Output:* New person added: Abel Remarks:  Picture: 043d0024-8f59-4c5e-ada6-8d58262b4d8f.png +
 *To tester:* 043d0024-8f59-4c5e-ada6-8d58262b4d8f is a unique id. +
@@ -109,9 +106,9 @@ Parameters: INDEX (must be a positive integer) r/[REMARK]
 *Expected Output:* The person index provided is invalid
 
 * `remark 1 r/Likes to have coffee` +
-*Expected Output:* Added remark to Person: Abel Remarks: Has small eyes
+*Expected Output:* Added remark to Person: Abel Remarks: Likes to have coffee
 
-* `remark r/` +
+* `remark 1 r/` +
 *Expected Output:* Removed remark from Person: Abel Remarks:
 
 === Edit command
@@ -215,7 +212,7 @@ Selects the person identified by the index number used in the last person listin
 *Ensure that there is at least 1 contact in DeathNote, in this case we have a few contacts*
 
   add n/Abel b/12/12/1993 t/friend
-  add n/Abe MisoSoup w/
+  add n/Abe MisoSoup
   add n/Bernice w/https://berniceyu.com/ e/Bernice@gmail.com b/10/12/1990 t/friend
   add n/Charlotte a/Jurong p/9876543 t/friend t/colleague
   add n/Denise a/Clementi p/98789032 e/Denise@gmail.com
@@ -246,7 +243,7 @@ Shows a list of all persons in DeathNote. +
 *Ensure that there is at least 1 contact in DeathNote, in this case we have a few contacts*
 
   add n/Abel b/12/12/1993 t/friend
-  add n/Abe MisoSoup w/
+  add n/Abe MisoSoup
   add n/Bernice w/https://berniceyu.com/ e/Bernice@gmail.com b/10/12/1990 t/friend
   add n/Charlotte a/Jurong p/9876543 t/friend t/colleague
   add n/Denise a/Clementi p/98789032 e/Denise@gmail.com
@@ -263,13 +260,13 @@ Opens a new instance of DeathNote.
 * `new` +
 *Expected Output:* Invalid command format!
 new: Open a new DeathNote.
-Paremeters: PATH
+Parameters: PATH
 Example: new C:\Users\crispy\Downloads\NewDeathNote.xml
 
 * `new C:\DeathNote\newDeathNote` +
 *Expected Output:* Invalid command format!
 new: Open a new DeathNote.
-Paremeters: PATH
+Parameters: PATH
 Example: new C:\Users\crispy\Downloads\NewDeathNote.xml
 
 * `new C:\DeathNote\newDeathNote.xml` +
@@ -277,7 +274,7 @@ Example: new C:\Users\crispy\Downloads\NewDeathNote.xml
 *Observe:* DeathNote will reload with a new sample list of contacts. +
 In the folder C:\DeathNote there will be an newDeathNote.xml when the application saves
 
-* `new C:\DeathNote\newDeathNote.xml` (On a location where newDeathNote.xml exists) +
+* `new C:\DeathNote\newDeathNote.xml` (On a location where newDeathNote.xml exists with at least one contact) +
 *Expected Output:* Unable to create new DeathNote - file already exists
 
 === Open command
@@ -294,13 +291,13 @@ Opens another existing instance of DeathNote.
 * `open` +
 *Expected Output:* Invalid command format!
 open: Open a different DeathNote.
-Paremeters: PATH
+Parameters: PATH
 Example: open C:\Users\crispy\Downloads\DeathNote.xml
 
 * `open C:\DeathNote\newDeathNote` +
 *Expected output:* Invalid command format!
 open: Open a different DeathNote.
-Paremeters: PATH
+Parameters: PATH
 Example: open C:\Users\crispy\Downloads\DeathNote.xml
 
 * `open C:\DeathNote\newDeathNote.xml`
@@ -564,19 +561,25 @@ Edit will only work within the bounds of the current displayed list +
 Edit is based on base 1 index +
 
 . `edit 0 b/15/02/1992` +
-*Expected Output:* The person index provided is invalid +
+*Expected Output:* Invalid command format!
+                   edit: Edits the details of the person identified by the index number used in the last person listing. Existing values will be overwritten by the input values.
+                   Parameters: INDEX (must be a positive integer) [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [w/WEBSITE] [pic/PICTURE] [b/DD/MM/YYYY] [t/TAG]...
+                   Example: edit 1 p/91234567 e/johndoe@example.com +
 
 * *Invalid Edit Command Test 3*
 Edit is based on base 1 index +
 
 . `edit -1 b/15/02/1992` +
-*Expected Output:* The person index provided is invalid +
+*Expected Output:* Invalid command format!
+                   edit: Edits the details of the person identified by the index number used in the last person listing. Existing values will be overwritten by the input values.
+                   Parameters: INDEX (must be a positive integer) [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [w/WEBSITE] [pic/PICTURE] [b/DD/MM/YYYY] [t/TAG]...
+                   Example: edit 1 p/91234567 e/johndoe@example.com +
 
 * *Invalid Edit Command Test 4*
 Edit is based on base 1 index +
 *Ensure that your list has at most 3 people*
 
-. `edit 3 b/15/02/1992` +
+. `edit 4 b/15/02/1992` +
 *Expected Output:* The person index provided is invalid +
 
 * *Invalid Edit Command Test 5*
@@ -658,7 +661,7 @@ Checks if editting a person results in a duplicate +
 
 . `add n/Adeeb`
 . `add n/Jeremy`
-. `edit 1 n/Adeeb`
+. `edit 2 n/Adeeb`
 
 *Expected Output:* This person already exists in the address book.
 
@@ -668,7 +671,7 @@ Checks if editting a person results in a duplicate just with different tags. +
 
 . `add n/Adeeb t/member`
 . `add n/Jeremy t/leader`
-. `edit 1 n/Adeeb`
+. `edit 2 n/Adeeb`
 
 *Expected Output:* This person already exists in the address book.
 
