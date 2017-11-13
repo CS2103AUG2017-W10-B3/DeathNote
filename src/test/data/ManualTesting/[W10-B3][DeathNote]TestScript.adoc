@@ -561,19 +561,25 @@ Edit will only work within the bounds of the current displayed list +
 Edit is based on base 1 index +
 
 . `edit 0 b/15/02/1992` +
-*Expected Output:* The person index provided is invalid +
+*Expected Output:* Invalid command format!
+                   edit: Edits the details of the person identified by the index number used in the last person listing. Existing values will be overwritten by the input values.
+                   Parameters: INDEX (must be a positive integer) [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [w/WEBSITE] [pic/PICTURE] [b/DD/MM/YYYY] [t/TAG]...
+                   Example: edit 1 p/91234567 e/johndoe@example.com +
 
 * *Invalid Edit Command Test 3*
 Edit is based on base 1 index +
 
 . `edit -1 b/15/02/1992` +
-*Expected Output:* The person index provided is invalid +
+*Expected Output:* Invalid command format!
+                   edit: Edits the details of the person identified by the index number used in the last person listing. Existing values will be overwritten by the input values.
+                   Parameters: INDEX (must be a positive integer) [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [w/WEBSITE] [pic/PICTURE] [b/DD/MM/YYYY] [t/TAG]...
+                   Example: edit 1 p/91234567 e/johndoe@example.com +
 
 * *Invalid Edit Command Test 4*
 Edit is based on base 1 index +
 *Ensure that your list has at most 3 people*
 
-. `edit 3 b/15/02/1992` +
+. `edit 4 b/15/02/1992` +
 *Expected Output:* The person index provided is invalid +
 
 * *Invalid Edit Command Test 5*
