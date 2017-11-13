@@ -658,7 +658,7 @@ Checks if editting a person results in a duplicate +
 
 . `add n/Adeeb`
 . `add n/Jeremy`
-. `edit 1 n/Adeeb`
+. `edit 2 n/Adeeb`
 
 *Expected Output:* This person already exists in the address book.
 
@@ -668,7 +668,7 @@ Checks if editting a person results in a duplicate just with different tags. +
 
 . `add n/Adeeb t/member`
 . `add n/Jeremy t/leader`
-. `edit 1 n/Adeeb`
+. `edit 2 n/Adeeb`
 
 *Expected Output:* This person already exists in the address book.
 
