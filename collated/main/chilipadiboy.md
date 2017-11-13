@@ -231,6 +231,26 @@ public class Birthday {
         return value;
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) { // short circuit if same object
+            return true;
+        } else if (!(other instanceof Birthday)) { // instanceof handle nulls
+            return false;
+        } else if (this.value == ((Birthday) other).value) {
+            return true;
+        } else if (this.value != null && this.value.equals(((Birthday) other).value)) { // state check
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return value.hashCode();
+    }
+}
 ```
 ###### \java\seedu\address\model\person\Person.java
 ``` java
